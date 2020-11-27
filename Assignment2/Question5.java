@@ -1,4 +1,5 @@
 import java.util.*;
+// Don't input duplicates
 
 public class Question5 {
 

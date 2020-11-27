@@ -2,33 +2,42 @@ package com.shivam;
 
 import java.util.Scanner;
 
-public class Question3 {
+public class Main {
 
-    public static void sort(String[] arr) {
-        int n = arr.length;
-        for(int i=0;i<n-1;i++) {
-            for(int j=i+1;j<n;j++) {
-                if(arr[i].compareTo(arr[j]) > 0) {
-                    String temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
+    static int compare(String a, String b) {
+        for(int i=0;i<a.length() && i<b.length(); i++) {
+            if(a.charAt(i) != b.charAt(i)) {
+                return a.charAt(i) - b.charAt(i);
+            }
+        }
+        return a.length() - b.length();
+    }
+
+    static void sort(String[] strings) {
+        // type of bubble sort
+        for(int j=1;j< strings.length;j++) {
+            for (int i = 0; i < strings.length - j; i++) {
+                if (compare(strings[i], strings[i + 1]) > 0) {
+                    String temp = strings[i];
+                    strings[i] = strings[i + 1];
+                    strings[i + 1] = temp;
                 }
             }
         }
     }
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter Size of Array");
+        System.out.println("Enter Size of String Array");
         int n = Integer.parseInt(sc.nextLine());
-        String[] arr = new String[n];
+        String[] strings = new String[n];
         System.out.println("Input Array elements/ Enter separated only");
-        for (int i=0;i<n;i++) {
-            arr[i] = sc.nextLine();
+        for(int i=0;i<n;i++) {
+            strings[i] = sc.nextLine();
         }
-        sort(arr);
-        for (int i=0;i<n;i++) {
-            System.out.println(arr[i]);
+        sort(strings);
+        for(int i=0;i<n;i++) {
+            System.out.println(strings[i]);
         }
     }
 }
